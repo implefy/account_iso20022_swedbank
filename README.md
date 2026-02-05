@@ -1,6 +1,6 @@
-# ISO 20022 Swedbank Payment Module for Odoo 19
+# Swedbank ISO 20022 Payment Module for Odoo 19
 
-Swedbank Sweden's MIG-compliant ISO 20022 pain.001.001.03 payment module.
+Odoo 19 module implementing Swedbank Sweden's MIG for ISO 20022 pain.001.001.03 Credit Transfers.
 
 ## Features
 
@@ -8,38 +8,38 @@ Swedbank Sweden's MIG-compliant ISO 20022 pain.001.001.03 payment module.
 - XML schema validation against official Swedbank XSD
 - Swedish domestic payments (Bankgiro, Plusgiro, BBAN)
 - SEPA Credit Transfers (EUR)
-- International payments
 - Agreement ID validation (format: nnnnnnnnnnnnAnnn)
 - Swedish character set support (å Å ä Ä ö Ö)
-
-## Service Levels
-
-| Code | Description |
-|------|-------------|
-| NURG | Standard (default) |
-| SEPA | SEPA Credit Transfer (EUR) |
-| URGP | Urgent payments |
-| SDVA | Same day value |
-
-## Swedish Clearing Codes
-
-| Code | Description |
-|------|-------------|
-| 9900 | Bankgiro |
-| 9960 | Plusgiro |
-| nnnn | Bank clearing number |
+- Service levels: NURG, SEPA, URGP, SDVA
 
 ## Installation
 
-1. Copy to Odoo addons directory
-2. Update Apps List
-3. Install "ISO 20022 Swedbank"
+### Option 1: Add to addons_path
+
+```bash
+git clone https://github.com/implefy/account_iso20022_swedbank.git
+```
+
+Add the cloned directory to your `odoo.conf`:
+```ini
+addons_path = /path/to/odoo/addons,/path/to/account_iso20022_swedbank
+```
+
+### Option 2: Symlink to addons
+
+```bash
+cd /path/to/odoo/addons
+git clone https://github.com/implefy/account_iso20022_swedbank.git /opt/custom_addons/account_iso20022_swedbank
+ln -s /opt/custom_addons/account_iso20022_swedbank/account_iso20022_swedbank .
+```
+
+Then restart Odoo and install "ISO 20022 Swedbank" from Apps.
 
 ## Configuration
 
-1. Go to Accounting > Configuration > Journals
-2. Open bank journal > Swedbank ISO 20022 tab
-3. Enter Swedbank Agreement ID
+1. Go to **Accounting > Configuration > Journals**
+2. Open your bank journal > **Swedbank ISO 20022** tab
+3. Enter your **Swedbank Agreement ID** (format: 123456789012A001)
 4. Set default service level and charge bearer
 
 ## License
