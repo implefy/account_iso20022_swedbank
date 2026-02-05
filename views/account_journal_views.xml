@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_journal_form_swedbank" model="ir.ui.view">
+        <field name="name">account.journal.form.swedbank</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='bank_account']" position="after">
+                <page string="Swedbank ISO 20022" name="swedbank_iso20022"
+                      invisible="type != 'bank'">
+                    <group>
+                        <group string="Swedbank Configuration">
+                            <field name="swedbank_agreement_id" placeholder="e.g., 123456789123B001"/>
+                            <field name="swedbank_pain_version"/>
+                        </group>
+                        <group string="Default Payment Settings">
+                            <field name="swedbank_service_level"/>
+                            <field name="swedbank_category_purpose"/>
+                            <field name="swedbank_charge_bearer"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

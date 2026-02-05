@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_payment_form_swedbank" model="ir.ui.view">
+        <field name="name">account.payment.form.swedbank</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='memo']" position="after">
+                <field name="is_swedbank_payment" invisible="1"/>
+                <separator string="Swedbank ISO 20022" invisible="not is_swedbank_payment"/>
+                <group invisible="not is_swedbank_payment">
+                    <group>
+                        <field name="swedbank_end_to_end_id"/>
+                        <field name="swedbank_instruction_id"/>
+                    </group>
+                    <group>
+                        <field name="swedbank_service_level"/>
+                        <field name="swedbank_category_purpose"/>
+                        <field name="swedbank_charge_bearer"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

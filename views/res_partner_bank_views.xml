@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_bank_form_swedbank" model="ir.ui.view">
+        <field name="name">res.partner.bank.form.swedbank</field>
+        <field name="model">res.partner.bank</field>
+        <field name="inherit_id" ref="base.view_partner_bank_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='acc_number']" position="after">
+                <field name="swedbank_account_type"/>
+                <field name="swedbank_clearing_code" placeholder="e.g., 8105, 9900, 9960"
+                       invisible="swedbank_account_type == 'iban'"/>
+                <field name="swedbank_formatted_account" readonly="1"
+                       invisible="not swedbank_formatted_account"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
